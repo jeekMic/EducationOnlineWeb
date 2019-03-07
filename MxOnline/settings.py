@@ -16,6 +16,7 @@ import sys
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # 因为添加了apps文件夹，就需要把apps加入到app的搜索目录之下
 sys.path.insert(0,os.path.join(BASE_DIR, 'apps'))
+sys.path.insert(0,os.path.join(BASE_DIR, 'extra_app'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -42,6 +43,8 @@ INSTALLED_APPS = [
     'courses',
     'operations',
     'organizations',
+    'xadmin',
+    'crispy_forms'
 ]
 AUTH_USER_MODEL = "users.UserProfile"
 MIDDLEWARE = [
