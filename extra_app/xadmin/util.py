@@ -344,7 +344,7 @@ def display_for_field(value, field):
         return formats.number_format(value, field.decimal_places)
     elif isinstance(field, models.FloatField):
         return formats.number_format(value)
-    elif isinstance(field.rel, models.ManyToManyRel):
+    elif isinstance(field.remote_field, models.ManyToOneRel):
         return ', '.join([smart_text(obj) for obj in value.all()])
     else:
         return smart_text(value)
