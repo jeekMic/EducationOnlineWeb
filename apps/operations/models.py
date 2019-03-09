@@ -19,8 +19,8 @@ class UserAsk(models.Model):
 
 class CourseComments(models.Model):
     """课程评论"""
-    user = models.ForeignKey(UserProfile, verbose_name="用户", on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, verbose_name="课程", on_delete=models.CASCADE)
+    user     = models.ForeignKey(UserProfile, verbose_name="用户", on_delete=models.CASCADE)
+    course   = models.ForeignKey(Course, verbose_name="课程", on_delete=models.CASCADE)
     comments = models.CharField(max_length=200, verbose_name="评论")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="评论时间")
 
