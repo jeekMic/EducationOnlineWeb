@@ -12,11 +12,12 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import sys
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # 因为添加了apps文件夹，就需要把apps加入到app的搜索目录之下
-sys.path.insert(0,os.path.join(BASE_DIR, 'apps'))
-sys.path.insert(0,os.path.join(BASE_DIR, 'extra_app'))
+sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+sys.path.insert(0, os.path.join(BASE_DIR, 'extra_app'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -28,7 +29,10 @@ SECRET_KEY = '5r(6_w9=d*m)kdk9m*^v@ufgic2$^u_)2z!gmpfbxbv@ftp3wz'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+# 自定义auth登录
+AUTHENTICATION_BACKENDS = (
+    'users.views.CustomBackend',
+)
 
 # Application definition
 
@@ -44,7 +48,8 @@ INSTALLED_APPS = [
     'operations',
     'organizations',
     'xadmin',
-    'crispy_forms'
+    'crispy_forms',
+    'captcha'
 ]
 AUTH_USER_MODEL = "users.UserProfile"
 MIDDLEWARE = [
@@ -78,7 +83,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'MxOnline.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -91,7 +95,6 @@ DATABASES = {
         'POST': 3306,
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -111,7 +114,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -127,9 +129,8 @@ USE_L10N = True
 # 设置为本地时间
 USE_TZ = False
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS=[os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
