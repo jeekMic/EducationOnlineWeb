@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'organizations',
     'xadmin',
     'crispy_forms',
-    'captcha'
+    'captcha',
+    'pure_pagination'
 ]
 AUTH_USER_MODEL = "users.UserProfile"
 MIDDLEWARE = [
@@ -76,6 +77,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # python3 的写法
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -138,7 +141,18 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # 邮件发送配置
 EMAIL_HOST = "smtp.qq.com"
 EMAIL_PORT = 25
-EMAIL_HOST_USER = "1306133728@qq.com"
-EMAIL_HOST_PASSWORD = "lyfctzbharnqjded"
+EMAIL_HOST_USER = "23423@qq.com"
+EMAIL_HOST_PASSWORD = "fdsglksjdfglsjdfl"
 EMAIL_USER_TLS = False
 EMAIL_FORM = "1306133728@qq.com"
+
+MEDIA_URL = '/media/'
+# 相当于加载到根搜索目录
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# PAGINATION_SETTINGS = {
+#     'PAGE_RANGE_DISPLAYED': 10,
+#     'MARGIN_PAGES_DISPLAYED': 2,
+#
+#     'SHOW_FIRST_PAGE_WHEN_INVALID': True,
+# }

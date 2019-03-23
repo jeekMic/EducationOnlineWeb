@@ -11,6 +11,14 @@ class LoginForm(forms.Form):
 
 
 class RegisterForm(forms.Form):
-    email = forms.EmailField(required=True)
-    password = forms.CharField(required=True, min_length=5)
     captcha = CaptchaField(error_messages={"invalid": "验证码错误"})
+    email = forms.EmailField(required=True, error_messages={"invalid": "邮箱不正确"})
+    password = forms.CharField(required=True, error_messages={"invalid": "密码输入格式不对"})
+
+class ForgetForm(forms.Form):
+    captcha = CaptchaField(error_messages={"invalid": "验证码错误"})
+    email = forms.EmailField(required=True, error_messages={"invalid": "邮箱不正确"})
+
+class ModifyForm(forms.Form):
+    password1 = forms.CharField(required=True, min_length=5, error_messages={"invalid": "密码输入格式不对"})
+    password2 = forms.CharField(required=True, min_length=5, error_messages={"invalid": "密码输入格式不对"})

@@ -41,7 +41,7 @@
             <ul class="fr hd-bar">
                 <li>服务电话：<span>33333333</span></li>
                 <li class="active"><a href="/login/">[登录]</a></li>
-                <li><a href="#">[注册]</a></li>
+                <li><a href="{% url 'register' %}">[注册]</a></li>
 {#                <li><a href="register.html">[注册]</a></li>#}
             </ul>
         </div>
@@ -73,17 +73,17 @@
                     <input type='hidden' name='csrfmiddlewaretoken' value='mymQDzHWl2REXIfPMg2mJaLqDfaS1sD5' />
                     <div class="form-group marb20 {% if login_form.errors.username %}errorput{% endif %}">
                         <label>用&nbsp;户&nbsp;名</label>
-                        <input name="username" id="account_l" type="text" placeholder="手机号/邮箱" />
+                        <input name="username" id="account_l" type="text" placeholder="手机号/邮箱"  value="{{ login_form.username.value }}"/>
                     </div>
                     <div class="form-group marb8 {% if login_form.errors.password %}errorput{% endif %}">
                         <label>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>
-                        <input name="password" id="password_l" type="password" placeholder="请输入您的密码" />
+                        <input name="password" id="password_l" type="password" placeholder="请输入您的密码" value="{{ login_form.password.value }}"/>
                     </div>
                     <div class="error btns login-form-tips" id="jsLoginTips">{% for key,error in login_form.errors.items %}{{ error }}{% endfor %}{{ msg }}</div>
                      <div class="auto-box marb38">
                         <label><input type="checkbox" id="jsAutoLogin"> 自动登录</label>
-{#                        <a class="fr" href="{% url 'forget_pwd' %}">忘记密码？</a>#}
-                        <a class="fr" href="#">忘记密码？</a>
+                        <a class="fr" href="{% url 'forget' %}">忘记密码？</a>
+
                      </div>
                      <input class="btn btn-green" id="jsLoginBtn" type="submit" value="立即登录 > " />
 
